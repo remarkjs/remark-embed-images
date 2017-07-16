@@ -44,3 +44,11 @@ jobs:
               npm pack .
               npm publish .
             fi
+
+# trigger builds for git tags
+# https://discuss.circleci.com/t/git-tag-deploys-in-2-0/9493/8
+deployment:
+  trigger_tag:
+    tag: /.*/
+    commands:
+      - echo "make tags run in 2.0"
