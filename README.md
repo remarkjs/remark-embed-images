@@ -1,6 +1,6 @@
 # remark-embed-images
 
-> Embed images with data: URIs, inlining base64-encoded sources
+> Embed local images with data: URIs, inlining base64-encoded sources
 
 ## Usage
 
