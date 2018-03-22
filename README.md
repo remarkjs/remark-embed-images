@@ -1,7 +1,8 @@
 # remark-embed-images
 
-> Embed images with data: URIs, inlining base64-encoded sources
+> Embed local images with data: URIs, inlining base64-encoded sources
 
+Note, only local images are processed. No HTTP calls are made with this plugin.
 
 ## Usage
 
