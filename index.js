@@ -1,7 +1,8 @@
 'use strict'
 
+var fs = require('fs')
 var path = require('path')
-var datauri = require('datauri').sync
+var mimes = require('mime/lite')
 var visit = require('unist-util-visit')
 
 module.exports = embedImages
@@ -12,16 +13,40 @@ function embedImages() {
   return transformer
 }
 
-function transformer(tree, file) {
+function transformer(tree, file, done) {
+  var count = 0
+
   visit(tree, 'image', visitor)
+
+  if (!count) {
+    done()
+  }
 
   function visitor(node) {
     var url = node.url
-    var fp
 
     if (url && relative.test(url)) {
-      fp = path.resolve(file.cwd, file.dirname, url)
-      node.url = datauri(fp)
+      count++
+      fs.readFile(path.resolve(file.cwd, file.dirname, url), 'base64', one)
+    }
+
+    function one(err, data) {
+      var mime
+
+      if (err) {
+        count = Infinity
+        return done(err)
+      }
+
+      mime = mimes.getType(path.extname(url))
+
+      if (mime) {
+        node.url = 'data:' + mime + ';base64,' + data
+      }
+
+      if (--count === 0) {
+        done()
+      }
     }
   }
 }
