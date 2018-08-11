@@ -16,10 +16,12 @@ function transformer(tree, file) {
   visit(tree, 'image', visitor)
 
   function visitor(node) {
-    var url = String(node.url)
+    var url = node.url
+    var fp
 
-    if (relative.test(url)) {
-      node.url = datauri(path.resolve(file.dirname, url))
+    if (url && relative.test(url)) {
+      fp = path.resolve(file.cwd, file.dirname, url)
+      node.url = datauri(fp)
     }
   }
 }
