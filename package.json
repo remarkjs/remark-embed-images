@@ -21,25 +21,21 @@
     "unist-util-visit": "^1.0.0"
   },
   "devDependencies": {
-    "browserify": "^14.0.0",
-    "esmangle": "^1.0.0",
     "husky": "^0.14.3",
-    "nyc": "^11.0.0",
-    "remark": "^7.0.0",
-    "remark-cli": "^3.0.0",
-    "remark-html": "^6.0.1",
-    "remark-preset-wooorm": "^3.0.0",
+    "nyc": "^12.0.0",
+    "remark": "^9.0.0",
+    "remark-cli": "^5.0.0",
+    "remark-html": "^8.0.0",
+    "remark-preset-wooorm": "^4.0.0",
     "standard-version": "^4.2.0",
     "tape": "^4.0.0",
-    "to-vfile": "^2.1.1",
+    "to-vfile": "^5.0.0",
     "validate-commit-msg": "^2.12.2",
-    "xo": "^0.18.0"
+    "xo": "^0.22.0"
   },
   "scripts": {
     "build:md": "remark . -qfo",
-    "build:bundle": "browserify index.js --no-builtins -s remarkEmbedBase64Images > remark-embed-images.js",
-    "build:mangle": "esmangle remark-embed-images.js > remark-embed-images.min.js",
-    "build": "yarn run build:md && yarn run build:bundle && yarn run build:mangle",
+    "build": "yarn run build:md",
     "lint": "xo",
     "test:api": "node test",
     "test:coverage": "nyc --reporter lcov tape test.js",
@@ -52,9 +48,6 @@
     "esnext": false,
     "rules": {
       "guard-for-in": "off"
-    },
-    "ignores": [
-      "remark-embed-images.js"
-    ]
+    }
   }
 }

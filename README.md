@@ -2,18 +2,18 @@
 
 > Embed images with data: URIs, inlining base64-encoded sources
 
-
 ## Usage
 
 This is a plugin for the [remark markdown processor](http://remark.js.org/).
 
-
 Input:
+
 ```md
 ![A PNG](./foo.png)
 ```
 
 Process:
+
 ```js
 const embedImage = require('remark-embed-images');
 const vfile = require('to-vfile')
@@ -27,6 +27,7 @@ remark()
 ```
 
 Output:
+
 ```md
 ![A PNG](data:image/png;base64,0000...)
 ```

@@ -4,7 +4,7 @@ const test = require('tape');
 const remark = require('remark');
 const html = require('remark-html');
 const vfile = require('to-vfile');
-const embedImages = require('./index.js');
+const embedImages = require('.');
 
 const FOO = vfile.readSync({path: 'fixtures/foo.md'});
 const FOO_RESULT_MD = vfile.readSync('fixtures/foo-result.md');
