@@ -37,7 +37,7 @@
   "scripts": {
     "format": "remark README.md -qfo && prettier --write \"**/*.js\" && xo --fix",
     "test:api": "node test",
-    "test:coverage": "nyc --reporter lcov tape test.js",
+    "test:coverage": "nyc --reporter lcov tape test/index.js",
     "test": "yarn run format && yarn run test:coverage",
     "commitmsg": "validate-commit-msg",
     "release": "standard-version --prerelease pre --message 'release: cut v%s'"
