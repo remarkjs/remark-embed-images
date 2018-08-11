@@ -1,30 +1,25 @@
-'use strict';
+'use strict'
 
-const path = require('path');
-const datauri = require('datauri').sync;
-const visit = require('unist-util-visit');
+var path = require('path')
+var datauri = require('datauri').sync
+var visit = require('unist-util-visit')
 
-module.exports = attacher;
+module.exports = embedImages
 
-function attacher() {
-  return transformer;
+var relative = /^\.{1,2}\//
 
-  function transformer(tree, file) {
-    visit(tree, 'image', visitor);
+function embedImages() {
+  return transformer
+}
 
-    function visitor(node) {
-      const url = String(node.url);
-      /* Unused variables:
-       * const alt = node.alt;
-       * const title = node.title;
-       */
+function transformer(tree, file) {
+  visit(tree, 'image', visitor)
 
-      let local = url.startsWith('./') || url.startsWith('../');
-      if (local) {
-        const imageFileUrl = path.resolve(file.dirname, url);
+  function visitor(node) {
+    var url = String(node.url)
 
-        node.url = datauri(imageFileUrl);
-      }
+    if (relative.test(url)) {
+      node.url = datauri(path.resolve(file.dirname, url))
     }
   }
 }

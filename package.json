@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "datauri": "^1.0.5",
+    "prettier": "^1.14.2",
     "unist-util-visit": "^1.0.0"
   },
   "devDependencies": {
@@ -34,20 +35,23 @@
     "xo": "^0.22.0"
   },
   "scripts": {
-    "build:md": "remark . -qfo",
-    "build": "yarn run build:md",
-    "lint": "xo",
+    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
     "test:api": "node test",
     "test:coverage": "nyc --reporter lcov tape test.js",
-    "test": "yarn run build && yarn run lint && yarn run test:coverage",
+    "test": "yarn run format && yarn run test:coverage",
     "commitmsg": "validate-commit-msg",
     "release": "standard-version --prerelease pre --message 'release: cut v%s'"
   },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
   "xo": {
-    "space": true,
-    "esnext": false,
-    "rules": {
-      "guard-for-in": "off"
-    }
+    "prettier": true,
+    "esnext": false
   }
 }

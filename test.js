@@ -1,36 +1,34 @@
-'use strict';
+'use strict'
 
-const test = require('tape');
-const remark = require('remark');
-const html = require('remark-html');
-const vfile = require('to-vfile');
-const embedImages = require('.');
+var test = require('tape')
+var remark = require('remark')
+var html = require('remark-html')
+var vfile = require('to-vfile')
+var embedImages = require('.')
 
-const FOO = vfile.readSync({path: 'fixtures/foo.md'});
-const FOO_RESULT_MD = vfile.readSync('fixtures/foo-result.md');
-const FOO_RESULT_HTML = vfile.readSync('fixtures/foo-result.html');
+test('remark-embed-images', function(t) {
+  var input = vfile.readSync({path: 'fixtures/foo.md'})
 
-test('remark-embed-images', function (t) {
+  t.plan(2)
+
   remark()
     .use(embedImages)
-    .process(FOO, function (err, file) {
-      t.ifErr(err);
+    .process(input, function(err, file) {
+      t.deepEqual(
+        [err, String(file)],
+        [null, String(vfile.readSync('fixtures/foo-result.md'))],
+        'should inline images'
+      )
+    })
 
-      t.equal(String(file), FOO_RESULT_MD.contents.toString());
-
-      t.end();
-    });
-});
-
-test('integration test with remark-html', function (t) {
   remark()
     .use(embedImages)
     .use(html)
-    .process(FOO, function (err, file) {
-      t.ifErr(err);
-
-      t.equal(String(file), FOO_RESULT_HTML.contents.toString());
-
-      t.end();
-    });
-});
+    .process(input, function(err, file) {
+      t.deepEqual(
+        [err, String(file)],
+        [null, String(vfile.readSync('fixtures/foo-result.html'))],
+        'should integrate with remark-html'
+      )
+    })
+})
