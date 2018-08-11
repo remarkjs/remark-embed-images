@@ -10,8 +10,8 @@
     "inline",
     "remark"
   ],
-  "repository": "https://github.com/dherges/remark-embed-images",
-  "bugs": "https://github.com/dherges/remark-embed-images/issues",
+  "repository": "https://github.com/remarkjs/remark-embed-images",
+  "bugs": "https://github.com/remarkjs/remark-embed-images/issues",
   "author": "David Herges <david@spektrakel.de>",
   "files": [
     "index.js"

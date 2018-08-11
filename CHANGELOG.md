@@ -8,4 +8,4 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
--   first version ([785664e](https://github.com/dherges/remark-embed-images/commit/785664e))
+-   first version ([785664e](https://github.com/remarkjs/remark-embed-images/commit/785664e))
