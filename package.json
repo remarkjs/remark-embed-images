@@ -35,12 +35,23 @@
     "xo": "^0.22.0"
   },
   "scripts": {
-    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "format": "remark README.md -qfo && prettier --write \"**/*.js\" && xo --fix",
     "test:api": "node test",
     "test:coverage": "nyc --reporter lcov tape test.js",
     "test": "yarn run format && yarn run test:coverage",
     "commitmsg": "validate-commit-msg",
     "release": "standard-version --prerelease pre --message 'release: cut v%s'"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
   },
   "prettier": {
     "tabWidth": 2,
