@@ -1,6 +1,6 @@
 {
   "name": "remark-embed-images",
-  "version": "1.0.0-pre.0",
+  "version": "1.0.0",
   "description": "Embed images with data: URIs, inlining base64-encoded sources",
   "license": "MIT",
   "keywords": [
