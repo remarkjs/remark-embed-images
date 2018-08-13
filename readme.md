@@ -1,4 +1,4 @@
-# remark-embed-images [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
+# remark-embed-images [![Travis][badge-travis]][status-travis] [![Circle][badge-circle]][status-circle] [![Coverage][badge-coverage]][status-coverage] [![Chat][badge-chat]][chat]
 
 Embed local images as data URIs, inlining files as base64-encoded values.
 
@@ -59,15 +59,19 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark-embed-images.svg
+[badge-travis]: https://img.shields.io/travis/remarkjs/remark-embed-images.svg
 
-[build-status]: https://travis-ci.org/remarkjs/remark-embed-images
+[status-travis]: https://travis-ci.org/remarkjs/remark-embed-images
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-embed-images.svg
+[badge-circle]: https://circleci.com/gh/remarkjs/remark-embed-images.svg?style=shield
 
-[coverage-status]: https://codecov.io/github/remarkjs/remark-embed-images
+[status-circle]: https://circleci.com/gh/remarkjs/remark-embed-images
 
-[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
+[badge-coverage]: https://img.shields.io/codecov/c/github/remarkjs/remark-embed-images.svg
+
+[status-coverage]: https://codecov.io/github/remarkjs/remark-embed-images
+
+[badge-chat]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 
 [chat]: https://gitter.im/remarkjs/Lobby
 
