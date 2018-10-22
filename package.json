@@ -21,25 +21,25 @@
     "unist-util-visit": "^1.0.0"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "nyc": "^12.0.0",
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
+    "husky": "^1.1.0",
+    "nyc": "^13.0.0",
     "prettier": "^1.14.2",
-    "remark": "^9.0.0",
-    "remark-cli": "^5.0.0",
+    "remark": "^10.0.0",
+    "remark-cli": "^6.0.0",
     "remark-html": "^8.0.0",
     "remark-preset-wooorm": "^4.0.0",
     "standard-version": "^4.2.0",
     "tape": "^4.0.0",
     "to-vfile": "^5.0.0",
-    "validate-commit-msg": "^2.12.2",
-    "xo": "^0.22.0"
+    "xo": "^0.23.0"
   },
   "scripts": {
     "format": "remark readme.md -qfo && prettier --write \"**/*.js\" && xo --fix",
     "test:api": "node test",
     "test:coverage": "nyc --reporter lcov tape test/index.js",
     "test": "yarn run format && yarn run test:coverage",
-    "commitmsg": "validate-commit-msg",
     "release": "standard-version --prerelease pre --message 'release: cut v%s'"
   },
   "nyc": {
@@ -64,5 +64,15 @@
   "xo": {
     "prettier": true,
     "esnext": false
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
