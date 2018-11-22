@@ -12,7 +12,11 @@
   ],
   "repository": "https://github.com/remarkjs/remark-embed-images",
   "bugs": "https://github.com/remarkjs/remark-embed-images/issues",
-  "author": "David Herges <david@spektrakel.de>",
+  "author": "David Herges <david@spektrakel.de> (https://spektrakel.de)",
+  "contributors": [
+    "David Herges <david@spektrakel.de> (https://spektrakel.de)",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
   "files": [
     "index.js"
   ],
