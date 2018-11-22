@@ -1,4 +1,12 @@
-# remark-embed-images [![Travis][badge-travis]][status-travis] [![Circle][badge-circle]][status-circle] [![Coverage][badge-coverage]][status-coverage] [![Chat][badge-chat]][chat]
+# remark-embed-images
+
+[![Travis][travis-badge]][travis]
+[![Circle][circle-badge]][circle]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Chat][chat-badge]][chat]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
 
 Embed local images as data URIs, inlining files as base64-encoded values.
 
@@ -59,21 +67,31 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[badge-travis]: https://img.shields.io/travis/remarkjs/remark-embed-images.svg
+[travis-badge]: https://img.shields.io/travis/remarkjs/remark-embed-images.svg
 
-[status-travis]: https://travis-ci.org/remarkjs/remark-embed-images
+[travis]: https://travis-ci.org/remarkjs/remark-embed-images
 
-[badge-circle]: https://circleci.com/gh/remarkjs/remark-embed-images.svg?style=shield
+[circle-badge]: https://img.shields.io/circleci/project/github/remarkjs/remark-embed-images/master.svg
 
-[status-circle]: https://circleci.com/gh/remarkjs/remark-embed-images
+[circle]: https://circleci.com/gh/remarkjs/remark-embed-images
 
-[badge-coverage]: https://img.shields.io/codecov/c/github/remarkjs/remark-embed-images.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-embed-images.svg
 
-[status-coverage]: https://codecov.io/github/remarkjs/remark-embed-images
+[coverage]: https://codecov.io/github/remarkjs/remark-embed-images
 
-[badge-chat]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
+[downloads-badge]: https://img.shields.io/npm/dm/remark-embed-images.svg
 
-[chat]: https://gitter.im/remarkjs/Lobby
+[downloads]: https://www.npmjs.com/package/remark-embed-images
+
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/remark
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
 
 [license]: license
 
