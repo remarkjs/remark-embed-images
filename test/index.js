@@ -1,5 +1,6 @@
 'use strict'
 
+var path = require('path')
 var test = require('tape')
 var remark = require('remark')
 var html = require('remark-html')
@@ -62,5 +63,5 @@ test('remark-embed-images', function(t) {
 })
 
 function read(basename) {
-  return vfile.readSync({cwd: __dirname, path: 'fixtures/' + basename})
+  return vfile.readSync({cwd: __dirname, path: path.join('fixtures', basename)})
 }
