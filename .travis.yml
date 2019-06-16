@@ -3,3 +3,13 @@ node_js:
   - lts/boron
   - node
 after_script: bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: Wl7mz7V0VPP+DIsnTHi2I7kb6mBHrCtUt1tZpVGOZjxymdihaNvb/vZMQ9bxnuxYKiYJ2R8triz+8sjluvZSN7OF0eb8yPu4qfEtYZQQmJ6bFumMEviij2F+ipy461RGxasQX83NKbuvHz1CpVpOfrZoWkPyigOqzx9amik2Ppnq9uBxJuXS/Prln63xLAALPBiBHgKWTQcvUn8ead7t3iLzgzQikut13/CKiJkpTJoorugHBdMhuUwxj8imddlG41eJwXD9NnUmkF73CW7z4uZhJjWmcMp2DYsXsaDZA4moqIaHfGK1gzJvv28t1WaoUPrXGO0+WWG22fx9x8FVf6wtRjMWAk/xbWcG7BIuEY4QjfJ8mlrbRsVA9W1Yew9PG84OW3JcqHJgYSBRxgl7ozqFPavCpdRJ4/nteu0ZUdTsPd8idkR6aPzKo8am3+wD0qwTP/KwerYdmjWrjYQz6SCe4haNrXBswrwyom4yP12TKj5qX4NlKKeSKmowO3e18KUsTXuZExkKPiYHFBIOQDLkScncA61IG/xQnKwyHeF+S8bjqec9CKaWVW/ryGQWJ6tsUD35CKsgLw/gwZatLWh61rqIC9mezEbPv1607KDS7D1/pVs9ujGIFy5QgLntZVHn+DY4XmTdH9hZB/Eouw3XpQbovq7efvPlVUvYwhw=
+  file:
+    - 'remark-embed-images.js'
+    - 'remark-embed-images.min.js'
+  on:
+    tags: true
