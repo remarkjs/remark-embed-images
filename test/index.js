@@ -15,7 +15,7 @@ test('remark-embed-images', function(t) {
     .process(read('foo.md'), function(err, file) {
       t.deepEqual(
         [err, String(file)],
-        [null, String(read('foo-result.md'))],
+        [null, String(read('foo-result.md')).replace(/\r\n/g, '\n')],
         'should inline images'
       )
     })
@@ -26,7 +26,7 @@ test('remark-embed-images', function(t) {
     .process(read('foo.md'), function(err, file) {
       t.deepEqual(
         [err, String(file)],
-        [null, String(read('foo-result.html'))],
+        [null, String(read('foo-result.html')).replace(/\r\n/g, '\n')],
         'should integrate with remark-html'
       )
     })
@@ -46,7 +46,7 @@ test('remark-embed-images', function(t) {
     .process(read('empty.md'), function(err, file) {
       t.deepEqual(
         [err, String(file)],
-        [null, String(read('empty.md'))],
+        [null, String(read('empty.md')).replace(/\r\n/g, '\n')],
         'should work on documents without images'
       )
     })
@@ -56,7 +56,7 @@ test('remark-embed-images', function(t) {
     .process(read('unknown-mime.md'), function(err, file) {
       t.deepEqual(
         [err, String(file)],
-        [null, String(read('unknown-mime.md'))],
+        [null, String(read('unknown-mime.md')).replace(/\r\n/g, '\n')],
         'should ignore extensions that are unknown'
       )
     })
