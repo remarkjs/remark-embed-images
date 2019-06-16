@@ -32,7 +32,6 @@
     "remark-cli": "^6.0.0",
     "remark-html": "^9.0.0",
     "remark-preset-wooorm": "^5.0.0",
-    "standard-version": "^6.0.0",
     "tape": "^4.0.0",
     "tinyify": "^2.0.0",
     "to-vfile": "^6.0.0",
@@ -45,8 +44,7 @@
     "build": "npm run build-bundle && npm run build-mangle",
     "test:api": "node test",
     "test:coverage": "nyc --reporter lcov tape test/index.js",
-    "test": "npm run format && npm run build && npm run test:coverage",
-    "release": "standard-version --prerelease pre --message 'release: cut v%s'"
+    "test": "npm run format && npm run build && npm run test:coverage"
   },
   "nyc": {
     "check-coverage": true,
