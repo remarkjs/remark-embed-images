@@ -1,8 +1,5 @@
 language: node_js
 node_js:
-- lts/boron
-- node
-before_install: npm install -g yarn
-install: yarn install
-script: yarn test
+  - lts/boron
+  - node
 after_script: bash <(curl -s https://codecov.io/bash)
