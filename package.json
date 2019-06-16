@@ -25,10 +25,7 @@
     "unist-util-visit": "^1.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
     "browserify": "^16.0.0",
-    "husky": "^2.0.0",
     "nyc": "^14.0.0",
     "prettier": "^1.0.0",
     "remark": "^10.0.0",
@@ -73,15 +70,5 @@
   "xo": {
     "prettier": true,
     "esnext": false
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
