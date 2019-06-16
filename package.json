@@ -1,16 +1,20 @@
 {
   "name": "remark-embed-images",
   "version": "1.0.1",
-  "description": "Embed images with data: URIs, inlining base64-encoded sources",
+  "description": "remark plugin to embed images with data URIs, inlining base64-encoded sources",
   "license": "MIT",
   "keywords": [
+    "unified",
+    "remark",
+    "plugin",
+    "mdast",
+    "markdown",
     "image",
     "embed",
     "base64",
-    "inline",
-    "remark"
+    "inline"
   ],
-  "repository": "https://github.com/remarkjs/remark-embed-images",
+  "repository": "remarkjs/remark-embed-images",
   "bugs": "https://github.com/remarkjs/remark-embed-images/issues",
   "author": "David Herges <david@spektrakel.de> (https://spektrakel.de)",
   "contributors": [
