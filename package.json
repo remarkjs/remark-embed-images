@@ -38,24 +38,19 @@
     "xo": "^0.24.0"
   },
   "scripts": {
-    "format": "remark readme.md -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "format": "remark *.md -qfo && prettier --write \"**/*.js\" && xo --fix",
     "build-bundle": "browserify . -s remarkEmbedImages -o remark-embed-images.js",
     "build-mangle": "browserify . -s remarkEmbedImages -p tinyify -o remark-embed-images.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
-    "test:api": "node test",
-    "test:coverage": "nyc --reporter lcov tape test/index.js",
-    "test": "npm run format && npm run build && npm run test:coverage"
+    "test-api": "node test",
+    "test-coverage": "nyc --reporter lcov tape test/index.js",
+    "test": "npm run format && npm run build && npm run test-coverage"
   },
   "nyc": {
     "check-coverage": true,
     "lines": 100,
     "functions": 100,
     "branches": 100
-  },
-  "remarkConfig": {
-    "plugins": [
-      "preset-wooorm"
-    ]
   },
   "prettier": {
     "tabWidth": 2,
@@ -68,5 +63,10 @@
   "xo": {
     "prettier": true,
     "esnext": false
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }
