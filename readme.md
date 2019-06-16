@@ -1,7 +1,6 @@
 # remark-embed-images
 
 [![Travis][travis-badge]][travis]
-[![Circle][circle-badge]][circle]
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Chat][chat-badge]][chat]
@@ -70,10 +69,6 @@ repository, organisation, or community you agree to abide by its terms.
 [travis-badge]: https://img.shields.io/travis/remarkjs/remark-embed-images.svg
 
 [travis]: https://travis-ci.org/remarkjs/remark-embed-images
-
-[circle-badge]: https://img.shields.io/circleci/project/github/remarkjs/remark-embed-images/master.svg
-
-[circle]: https://circleci.com/gh/remarkjs/remark-embed-images
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-embed-images.svg
 
