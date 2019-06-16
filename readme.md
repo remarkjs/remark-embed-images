@@ -1,25 +1,28 @@
 # remark-embed-images
 
-[![Travis][travis-badge]][travis]
+[![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
-[![Chat][chat-badge]][chat]
+[![Size][size-badge]][size]
 [![Sponsors][sponsors-badge]][collective]
 [![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-Embed local images as data URIs, inlining files as base64-encoded values.
+[**remark**][remark] plugin to embed local images as data URIs, inlining files
+as base64-encoded values.
 
-## Installation
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install remark-embed-images
 ```
 
-## Usage
+## Use
 
-Say we have [foo.png][], and next to it the following file, `example.md`:
+Say we have an image, [`foo.png`][foo.png], and next to it the following file,
+`example.md`:
 
 ```markdown
 ![A PNG file](./foo.png)
@@ -27,7 +30,7 @@ Say we have [foo.png][], and next to it the following file, `example.md`:
 
 And our script, `example.js`, looks as follows:
 
-```javascript
+```js
 var vfile = require('to-vfile')
 var remark = require('remark')
 var embed = require('remark-embed-images')
@@ -48,17 +51,19 @@ Now, running `node example` yields:
 
 ## API
 
-### `remark.use(embedImages)`
+### `remark().use(embedImages)`
 
-Embed local images as data URIs.
+Embed local images as data URIs, inlining files as base64-encoded values.
 
 ## Contribute
 
-See [`contributing.md` in `remarkjs/remark`][contributing] for ways to get
-started.
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
 
-This organisation has a [Code of Conduct][coc].  By interacting with this
-repository, organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
@@ -66,9 +71,9 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/remarkjs/remark-embed-images.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark-embed-images/master.svg
 
-[travis]: https://travis-ci.org/remarkjs/remark-embed-images
+[build]: https://travis-ci.org/remarkjs/remark-embed-images
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-embed-images.svg
 
@@ -78,9 +83,9 @@ repository, organisation, or community you agree to abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/remark-embed-images
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-embed-images.svg
 
-[chat]: https://spectrum.chat/unified/remark
+[size]: https://bundlephobia.com/result?p=remark-embed-images
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -88,14 +93,24 @@ repository, organisation, or community you agree to abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/remark
+
+[npm]: https://docs.npmjs.com/cli/install
+
+[health]: https://github.com/remarkjs/.github
+
+[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+
+[support]: https://github.com/remarkjs/.github/blob/master/support.md
+
+[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
+
 [license]: license
 
 [author]: https://spektrakel.de
 
-[npm]: https://docs.npmjs.com/cli/install
-
-[contributing]: https://github.com/remarkjs/remark/blob/master/contributing.md
-
-[coc]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
+[remark]: https://github.com/remarkjs/remark
 
 [foo.png]: test/fixtures/foo.png
