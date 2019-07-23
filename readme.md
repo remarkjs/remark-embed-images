@@ -55,6 +55,13 @@ Now, running `node example` yields:
 
 Embed local images as data URIs, inlining files as base64-encoded values.
 
+## Security
+
+Although this plugin should be safe to use, always be careful with user input.
+For example, it’s possible to hide JavaScript inside images (such as GIFs,
+WebPs, and SVGs).
+User provided images open you up to a [cross-site scripting (XSS)][xss] attack.
+
 ## Contribute
 
 See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
@@ -114,3 +121,5 @@ abide by its terms.
 [remark]: https://github.com/remarkjs/remark
 
 [foo.png]: test/fixtures/foo.png
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
