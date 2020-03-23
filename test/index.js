@@ -7,12 +7,12 @@ var html = require('remark-html')
 var vfile = require('to-vfile')
 var embedImages = require('..')
 
-test('remark-embed-images', function(t) {
+test('remark-embed-images', function (t) {
   t.plan(5)
 
   remark()
     .use(embedImages)
-    .process(read('foo.md'), function(err, file) {
+    .process(read('foo.md'), function (err, file) {
       t.deepEqual(
         [err, String(file)],
         [null, String(read('foo-result.md')).replace(/\r\n/g, '\n')],
@@ -23,7 +23,7 @@ test('remark-embed-images', function(t) {
   remark()
     .use(embedImages)
     .use(html)
-    .process(read('foo.md'), function(err, file) {
+    .process(read('foo.md'), function (err, file) {
       t.deepEqual(
         [err, String(file)],
         [null, String(read('foo-result.html')).replace(/\r\n/g, '\n')],
@@ -33,7 +33,7 @@ test('remark-embed-images', function(t) {
 
   remark()
     .use(embedImages)
-    .process(read('error.md'), function(err, file) {
+    .process(read('error.md'), function (err, file) {
       t.deepEqual(
         [/no such file or directory/.test(err), file],
         [true, undefined],
@@ -43,7 +43,7 @@ test('remark-embed-images', function(t) {
 
   remark()
     .use(embedImages)
-    .process(read('empty.md'), function(err, file) {
+    .process(read('empty.md'), function (err, file) {
       t.deepEqual(
         [err, String(file)],
         [null, String(read('empty.md')).replace(/\r\n/g, '\n')],
@@ -53,7 +53,7 @@ test('remark-embed-images', function(t) {
 
   remark()
     .use(embedImages)
-    .process(read('unknown-mime.md'), function(err, file) {
+    .process(read('unknown-mime.md'), function (err, file) {
       t.deepEqual(
         [err, String(file)],
         [null, String(read('unknown-mime.md')).replace(/\r\n/g, '\n')],

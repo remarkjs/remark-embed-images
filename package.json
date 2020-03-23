@@ -35,8 +35,8 @@
   },
   "devDependencies": {
     "browserify": "^16.0.0",
-    "nyc": "^14.0.0",
-    "prettier": "^1.0.0",
+    "nyc": "^15.0.0",
+    "prettier": "^2.0.0",
     "remark": "^11.0.0",
     "remark-cli": "^7.0.0",
     "remark-html": "^10.0.0",
@@ -44,7 +44,7 @@
     "tape": "^4.0.0",
     "tinyify": "^2.0.0",
     "to-vfile": "^6.0.0",
-    "xo": "^0.24.0"
+    "xo": "^0.28.0"
   },
   "scripts": {
     "format": "remark *.md -qfo && prettier --write \"**/*.js\" && xo --fix",
