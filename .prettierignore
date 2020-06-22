@@ -1,3 +1,6 @@
 coverage/
 remark-embed-images.js
 remark-embed-images.min.js
+*.html
+*.json
+*.md
