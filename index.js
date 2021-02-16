@@ -30,12 +30,12 @@ function transformer(tree, file, done) {
       fs.readFile(path.resolve(file.cwd, file.dirname, url), 'base64', one)
     }
 
-    function one(err, data) {
+    function one(error, data) {
       var mime
 
-      if (err) {
+      if (error) {
         count = Infinity
-        return done(err)
+        return done(error)
       }
 
       mime = mimes.getType(path.extname(url))

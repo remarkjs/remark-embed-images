@@ -12,9 +12,9 @@ test('remark-embed-images', function (t) {
 
   remark()
     .use(embedImages)
-    .process(read('foo.md'), function (err, file) {
+    .process(read('foo.md'), function (error, file) {
       t.deepEqual(
-        [err, String(file)],
+        [error, String(file)],
         [null, String(read('foo-result.md')).replace(/\r\n/g, '\n')],
         'should inline images'
       )
@@ -23,9 +23,9 @@ test('remark-embed-images', function (t) {
   remark()
     .use(embedImages)
     .use(html)
-    .process(read('foo.md'), function (err, file) {
+    .process(read('foo.md'), function (error, file) {
       t.deepEqual(
-        [err, String(file)],
+        [error, String(file)],
         [null, String(read('foo-result.html')).replace(/\r\n/g, '\n')],
         'should integrate with remark-html'
       )
@@ -33,9 +33,9 @@ test('remark-embed-images', function (t) {
 
   remark()
     .use(embedImages)
-    .process(read('error.md'), function (err, file) {
+    .process(read('error.md'), function (error, file) {
       t.deepEqual(
-        [/no such file or directory/.test(err), file],
+        [/no such file or directory/.test(error), file],
         [true, undefined],
         'should fail on missing images'
       )
@@ -43,9 +43,9 @@ test('remark-embed-images', function (t) {
 
   remark()
     .use(embedImages)
-    .process(read('empty.md'), function (err, file) {
+    .process(read('empty.md'), function (error, file) {
       t.deepEqual(
-        [err, String(file)],
+        [error, String(file)],
         [null, String(read('empty.md')).replace(/\r\n/g, '\n')],
         'should work on documents without images'
       )
@@ -53,9 +53,9 @@ test('remark-embed-images', function (t) {
 
   remark()
     .use(embedImages)
-    .process(read('unknown-mime.md'), function (err, file) {
+    .process(read('unknown-mime.md'), function (error, file) {
       t.deepEqual(
-        [err, String(file)],
+        [error, String(file)],
         [null, String(read('unknown-mime.md')).replace(/\r\n/g, '\n')],
         'should ignore extensions that are unknown'
       )
