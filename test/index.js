@@ -1,8 +1,8 @@
 import path from 'path'
 import test from 'tape'
-import remark from 'remark'
+import {remark} from 'remark'
 import html from 'remark-html'
-import vfile from 'to-vfile'
+import {readSync} from 'to-vfile'
 import embedImages from '../index.js'
 
 test('remark-embed-images', function (t) {
@@ -61,8 +61,7 @@ test('remark-embed-images', function (t) {
 })
 
 function read(basename) {
-  return vfile.readSync({
-    cwd: path.join(process.cwd(), 'test'),
-    path: path.join('fixtures', basename)
+  return readSync({
+    path: path.join('test', 'fixtures', basename)
   })
 }
