@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import test from 'tape'
 import {remark} from 'remark'
 import {read} from 'to-vfile'

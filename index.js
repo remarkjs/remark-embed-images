@@ -2,8 +2,8 @@
  * @typedef {import('mdast').Root} Root
  */
 
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import mimes from 'mime/lite.js'
 import {visit} from 'unist-util-visit'
 
