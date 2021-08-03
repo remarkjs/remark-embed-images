@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import mimes from 'mime/lite.js'
-import visit from 'unist-util-visit'
+import {visit} from 'unist-util-visit'
 
 var relative = /^\.{1,2}\//
 
