@@ -1,67 +1,69 @@
 import path from 'path'
 import test from 'tape'
 import {remark} from 'remark'
-import html from 'remark-html'
-import {readSync} from 'to-vfile'
-import embedImages from '../index.js'
+import {read} from 'to-vfile'
+import remarkHtml from 'remark-html'
+import remarkEmbedImages from '../index.js'
 
-test('remark-embed-images', function (t) {
+test('remark-embed-images', async (t) => {
   t.plan(5)
 
-  remark()
-    .use(embedImages)
-    .process(read('foo.md'), function (error, file) {
-      t.deepEqual(
-        [error, String(file)],
-        [null, String(read('foo-result.md')).replace(/\r\n/g, '\n')],
-        'should inline images'
-      )
-    })
+  t.deepEqual(
+    String(
+      await remark()
+        .use(remarkEmbedImages)
+        .process(await read(path.join('test', 'fixtures', 'foo.md')))
+    ),
+    String(await read(path.join('test', 'fixtures', 'foo-result.md'))).replace(
+      /\r\n/g,
+      '\n'
+    ),
+    'should inline images'
+  )
 
-  remark()
-    .use(embedImages)
-    .use(html)
-    .process(read('foo.md'), function (error, file) {
-      t.deepEqual(
-        [error, String(file)],
-        [null, String(read('foo-result.html')).replace(/\r\n/g, '\n')],
-        'should integrate with remark-html'
-      )
-    })
+  t.deepEqual(
+    String(
+      await remark()
+        .use(remarkEmbedImages)
+        .use(remarkHtml)
+        .process(await read(path.join('test', 'fixtures', 'foo.md')))
+    ),
+    String(
+      await read(path.join('test', 'fixtures', 'foo-result.html'))
+    ).replace(/\r\n/g, '\n'),
+    'should integrate with remark-html'
+  )
 
-  remark()
-    .use(embedImages)
-    .process(read('error.md'), function (error, file) {
-      t.deepEqual(
-        [/no such file or directory/.test(error), file],
-        [true, undefined],
-        'should fail on missing images'
-      )
-    })
+  try {
+    await remark()
+      .use(remarkEmbedImages)
+      .process(await read(path.join('test', 'fixtures', 'error.md')))
+  } catch {
+    t.pass('should fail on missing images')
+  }
 
-  remark()
-    .use(embedImages)
-    .process(read('empty.md'), function (error, file) {
-      t.deepEqual(
-        [error, String(file)],
-        [null, String(read('empty.md')).replace(/\r\n/g, '\n')],
-        'should work on documents without images'
-      )
-    })
+  t.deepEqual(
+    String(
+      await remark()
+        .use(remarkEmbedImages)
+        .process(await read(path.join('test', 'fixtures', 'empty.md')))
+    ),
+    String(await read(path.join('test', 'fixtures', 'empty.md'))).replace(
+      /\r\n/g,
+      '\n'
+    ),
+    'should work on documents without images'
+  )
 
-  remark()
-    .use(embedImages)
-    .process(read('unknown-mime.md'), function (error, file) {
-      t.deepEqual(
-        [error, String(file)],
-        [null, String(read('unknown-mime.md')).replace(/\r\n/g, '\n')],
-        'should ignore extensions that are unknown'
-      )
-    })
+  t.deepEqual(
+    String(
+      await remark()
+        .use(remarkEmbedImages)
+        .process(await read(path.join('test', 'fixtures', 'unknown-mime.md')))
+    ),
+    String(
+      await read(path.join('test', 'fixtures', 'unknown-mime.md'))
+    ).replace(/\r\n/g, '\n'),
+    'should ignore extensions that are unknown'
+  )
 })
-
-function read(basename) {
-  return readSync({
-    path: path.join('test', 'fixtures', basename)
-  })
-}
