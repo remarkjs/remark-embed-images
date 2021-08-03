@@ -3,6 +3,4 @@
 .nyc_output/
 coverage/
 node_modules/
-remark-embed-images.js
-remark-embed-images.min.js
 yarn.lock
