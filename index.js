@@ -1,15 +1,11 @@
-'use strict'
-
-var fs = require('fs')
-var path = require('path')
-var mimes = require('mime/lite')
-var visit = require('unist-util-visit')
-
-module.exports = embedImages
+import fs from 'fs'
+import path from 'path'
+import mimes from 'mime/lite.js'
+import visit from 'unist-util-visit'
 
 var relative = /^\.{1,2}\//
 
-function embedImages() {
+export default function embedImages() {
   return transformer
 }
 

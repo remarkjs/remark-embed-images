@@ -1,11 +1,9 @@
-'use strict'
-
-var path = require('path')
-var test = require('tape')
-var remark = require('remark')
-var html = require('remark-html')
-var vfile = require('to-vfile')
-var embedImages = require('..')
+import path from 'path'
+import test from 'tape'
+import remark from 'remark'
+import html from 'remark-html'
+import vfile from 'to-vfile'
+import embedImages from '../index.js'
 
 test('remark-embed-images', function (t) {
   t.plan(5)
@@ -63,5 +61,8 @@ test('remark-embed-images', function (t) {
 })
 
 function read(basename) {
-  return vfile.readSync({cwd: __dirname, path: path.join('fixtures', basename)})
+  return vfile.readSync({
+    cwd: path.join(process.cwd(), 'test'),
+    path: path.join('fixtures', basename)
+  })
 }
