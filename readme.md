@@ -19,6 +19,9 @@ No change is needed: it works exactly the same now as it did before!
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -37,14 +40,16 @@ Say we have an image, [`foo.png`][foo.png], and next to it the following file,
 And our script, `example.js`, looks as follows:
 
 ```js
-var vfile = require('to-vfile')
-var remark = require('remark')
-var embed = require('remark-embed-images')
+import {readSync} from 'to-vfile'
+import {remark} from 'remark'
+import remarkEmbedImages from 'remark-embed-images'
+
+const file = readSync('example.md')
 
 remark()
-  .use(embed)
-  .process(vfile.readSync('example.md'), function(err, file) {
-    if (err) throw err
+  .use(remarkEmbedImages)
+  .process(file)
+  .then((file) => {
     console.log(String(file))
   })
 ```
@@ -57,7 +62,10 @@ Now, running `node example` yields:
 
 ## API
 
-### `remark().use(embedImages)`
+This package exports no identifiers.
+The default export is `remarkEmbedImages`.
+
+### `unified().use(remarkEmbedImages)`
 
 Embed local images as data URIs, inlining files as base64-encoded values.
 
