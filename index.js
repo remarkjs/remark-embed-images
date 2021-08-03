@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('mdast').Root} Root
+ */
+
 import fs from 'fs'
 import path from 'path'
 import mimes from 'mime/lite.js'
@@ -5,6 +9,12 @@ import {visit} from 'unist-util-visit'
 
 const relative = /^\.{1,2}\//
 
+/**
+ * Plugin to embed local images as data URIs, inlining files as base64-encoded
+ * values.
+ *
+ * @type {import('unified').Plugin<void[], Root>}
+ */
 export default function embedImages() {
   return (tree, file, done) => {
     let count = 0
@@ -12,6 +22,7 @@ export default function embedImages() {
     visit(tree, 'image', (node) => {
       if (node.url && relative.test(node.url)) {
         count++
+
         fs.readFile(
           path.resolve(file.cwd, file.dirname, node.url),
           'base64',
