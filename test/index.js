@@ -6,7 +6,17 @@ import remarkHtml from 'remark-html'
 import remarkEmbedImages from '../index.js'
 
 test('remark-embed-images', async (t) => {
-  t.plan(5)
+  t.plan(6)
+
+  t.match(
+    String(
+      await remark()
+        .use(remarkEmbedImages)
+        .process('![](./test/fixtures/foo.png)')
+    ),
+    /!\[]\(data:image\/png;base64,/,
+    'should inline images w/o file path'
+  )
 
   t.deepEqual(
     String(
@@ -25,7 +35,7 @@ test('remark-embed-images', async (t) => {
     String(
       await remark()
         .use(remarkEmbedImages)
-        .use(remarkHtml)
+        .use(remarkHtml, {sanitize: false})
         .process(await read(path.join('test', 'fixtures', 'foo.md')))
     ),
     String(
