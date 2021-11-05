@@ -10,7 +10,7 @@ import {visit} from 'unist-util-visit'
 const relative = /^\.{1,2}\//
 
 /**
- * Plugin to embed local images as data URIs, inlining files as base64-encoded
+ * Plugin to embed local images as data URIs, inlining files as encoded (base64)
  * values.
  *
  * @type {import('unified').Plugin<void[], Root>}
