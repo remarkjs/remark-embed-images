@@ -1,6 +1,6 @@
 {
   "name": "remark-embed-images",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "remark plugin to embed local images as data URIs",
   "license": "MIT",
   "keywords": [
