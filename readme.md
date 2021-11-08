@@ -8,56 +8,95 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-[**remark**][remark] plugin to embed local images as data URIs, inlining files
-as base64-encoded values.
+**[remark][]** plugin to embed local images as data URIs.
 
-## Note!
+## Contents
 
-This plugin is ready for the new parser in remark
-([`remarkjs/remark#536`](https://github.com/remarkjs/remark/pull/536)).
-No change is needed: it works exactly the same now as it did before!
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`unified().use(remarkEmbedImages)`](#unifieduseremarkembedimages)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This package is a [unified][] ([remark][]) plugin that inlines images as data
+URIs.
+
+**unified** is a project that transforms content with abstract syntax trees
+(ASTs).
+**remark** adds support for markdown to unified.
+**mdast** is the markdown AST that remark uses.
+This is a remark plugin that transforms mdast.
+
+## When should I use this?
+
+You can use this package when you want to move markdown that references local
+images around more easily, because images will be inlined.
+This does makes the markdown quite hard to read and isn’t supported everywhere
+(such as GitHub), because data URIs might result in security risks.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
-[npm][]:
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 
 ```sh
 npm install remark-embed-images
 ```
 
+In Deno with [Skypack][]:
+
+```js
+import remarkEmbedImages from 'https://cdn.skypack.dev/remark-embed-images@3?dts'
+```
+
+In browsers with [Skypack][]:
+
+```html
+<script type="module">
+  import remarkEmbedImages from 'https://cdn.skypack.dev/remark-embed-images@3?min'
+</script>
+```
+
 ## Use
 
-Say we have an image, [`foo.png`][foo.png], and next to it the following file,
+Say we have an image [`foo.png`][foo.png] and next to it the following file
 `example.md`:
 
 ```markdown
-![A PNG file](./foo.png)
+![A pink square](./foo.png)
 ```
 
-And our script, `example.js`, looks as follows:
+And our module `example.js` looks as follows:
 
 ```js
-import {readSync} from 'to-vfile'
+import {read} from 'to-vfile'
 import {remark} from 'remark'
 import remarkEmbedImages from 'remark-embed-images'
 
-const file = readSync('example.md')
+main()
 
-remark()
-  .use(remarkEmbedImages)
-  .process(file)
-  .then((file) => {
-    console.log(String(file))
-  })
+async function main() {
+  const file = await remark()
+    .use(remarkEmbedImages)
+    .process(await read('example.md'))
+
+  console.log(String(file))
+}
 ```
 
-Now, running `node example` yields:
+Now running `node example.js` yields:
 
 ```markdown
-![A PNG file](data:image/png;base64,iVBORw0…)
+![A pink square](data:image/png;base64,iVBORw0…)
 ```
 
 ## API
@@ -67,14 +106,36 @@ The default export is `remarkEmbedImages`.
 
 ### `unified().use(remarkEmbedImages)`
 
-Embed local images as data URIs, inlining files as base64-encoded values.
+Plugin to embed local images as data URIs.
+There are no options.
+
+## Types
+
+This package is fully typed with [TypeScript][].
+There are no extra exported types.
+
+## Compatibility
+
+Projects maintained by the unified collective are compatible with all maintained
+versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+Our projects sometimes work with older versions, but this is not guaranteed.
+
+This plugin works with `unified` version 6+ and `remark` version 7+.
 
 ## Security
 
-Although this plugin should be safe to use, always be careful with user input.
+Always be careful with user input.
 For example, it’s possible to hide JavaScript inside images (such as GIFs,
 WebPs, and SVGs).
 User provided images open you up to a [cross-site scripting (XSS)][xss] attack.
+
+## Related
+
+*   [`remarkjs/remark-images`](https://github.com/remarkjs/remark-images)
+    — add a simpler image syntax
+*   [`remarkjs/remark-unwrap-images`](https://github.com/remarkjs/remark-unwrap-images)
+    — remove the wrapping paragraph for images
 
 ## Contribute
 
@@ -120,6 +181,8 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[skypack]: https://www.skypack.dev
+
 [health]: https://github.com/remarkjs/.github
 
 [contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
@@ -136,4 +199,8 @@ abide by its terms.
 
 [foo.png]: test/fixtures/foo.png
 
+[unified]: https://github.com/unifiedjs/unified
+
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[typescript]: https://www.typescriptlang.org

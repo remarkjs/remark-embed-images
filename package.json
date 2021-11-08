@@ -1,7 +1,7 @@
 {
   "name": "remark-embed-images",
   "version": "3.0.0",
-  "description": "remark plugin to embed images with data URIs, inlining base64-encoded sources",
+  "description": "remark plugin to embed local images as data URIs",
   "license": "MIT",
   "keywords": [
     "unified",
