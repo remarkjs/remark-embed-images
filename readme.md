@@ -8,8 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[remark][]** plugin to embed local images as data URIs, inlining files
-as encoded (base64) values.
+**[remark][]** plugin to embed local images as data URIs.
 
 ## Contents
 
@@ -107,8 +106,7 @@ The default export is `remarkEmbedImages`.
 
 ### `unified().use(remarkEmbedImages)`
 
-Plugin to embed local images as data URIs, inlining files as encoded (base64)
-values.
+Plugin to embed local images as data URIs.
 There are no options.
 
 ## Types
