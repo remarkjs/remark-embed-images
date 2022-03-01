@@ -55,14 +55,14 @@ npm install remark-embed-images
 In Deno with [Skypack][]:
 
 ```js
-import remarkEmbedImages from 'https://cdn.skypack.dev/remark-embed-images@3?dts'
+import remarkEmbedImages from 'https://esm.sh/remark-embed-images@3'
 ```
 
 In browsers with [Skypack][]:
 
 ```html
 <script type="module">
-  import remarkEmbedImages from 'https://cdn.skypack.dev/remark-embed-images@3?min'
+  import remarkEmbedImages from 'https://esm.sh/remark-embed-images@3?bundle'
 </script>
 ```
 
