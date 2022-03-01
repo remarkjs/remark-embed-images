@@ -4,10 +4,9 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
+import isRelativeUrl from 'is-relative-url'
 import mimes from 'mime/lite.js'
 import {visit} from 'unist-util-visit'
-
-const relative = /^\.{1,2}\//
 
 /**
  * Plugin to embed local images as data URIs.
@@ -20,7 +19,7 @@ export default function embedImages() {
     const base = file.dirname ? path.resolve(file.cwd, file.dirname) : file.cwd
 
     visit(tree, 'image', (node) => {
-      if (node.url && relative.test(node.url)) {
+      if (node.url && isRelativeUrl(node.url) && !node.url.startsWith('/')) {
         count++
 
         fs.readFile(path.resolve(base, node.url), 'base64', (error, data) => {

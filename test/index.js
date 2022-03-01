@@ -6,13 +6,23 @@ import remarkHtml from 'remark-html'
 import remarkEmbedImages from '../index.js'
 
 test('remark-embed-images', async (t) => {
-  t.plan(6)
+  t.plan(7)
 
   t.match(
     String(
       await remark()
         .use(remarkEmbedImages)
         .process('![](./test/fixtures/foo.png)')
+    ),
+    /!\[]\(data:image\/png;base64,/,
+    'should inline images w/o file path'
+  )
+
+  t.match(
+    String(
+      await remark()
+        .use(remarkEmbedImages)
+        .process('![](test/fixtures/foo.png)')
     ),
     /!\[]\(data:image\/png;base64,/,
     'should inline images w/o file path'
