@@ -52,13 +52,13 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install remark-embed-images
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
 import remarkEmbedImages from 'https://esm.sh/remark-embed-images@3'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
@@ -181,7 +181,7 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [health]: https://github.com/remarkjs/.github
 
