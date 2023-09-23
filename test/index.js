@@ -1,16 +1,21 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import test from 'node:test'
-import {remark} from 'remark'
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import remarkStringify from 'remark-stringify'
+import rehypeStringify from 'rehype-stringify'
 import {VFile} from 'vfile'
-import remarkHtml from 'remark-html'
 import remarkEmbedImages from '../index.js'
 
 test('remark-embed-images', async () => {
   assert.match(
     String(
-      await remark()
+      await unified()
+        .use(remarkParse)
         .use(remarkEmbedImages)
+        .use(remarkStringify)
         .process('![](./test/fixtures/foo/foo.png)')
     ),
     /!\[]\(data:image\/png;base64,/,
@@ -19,8 +24,10 @@ test('remark-embed-images', async () => {
 
   assert.match(
     String(
-      await remark()
+      await unified()
+        .use(remarkParse)
         .use(remarkEmbedImages)
+        .use(remarkStringify)
         .process('![](test/fixtures/foo/foo.png)')
     ),
     /!\[]\(data:image\/png;base64,/,
@@ -28,8 +35,10 @@ test('remark-embed-images', async () => {
   )
 
   try {
-    await remark()
+    await unified()
+      .use(remarkParse)
       .use(remarkEmbedImages)
+      .use(remarkStringify)
       .process('![Some missing image](./missing.png)')
     assert.fail()
   } catch (error) {
@@ -44,12 +53,18 @@ test('remark-embed-images', async () => {
   const output = new URL('foo-output.html', import.meta.url)
   const expected = String(await fs.readFile(output))
   const actual = String(
-    await remark()
+    await unified()
+      .use(remarkParse)
       .use(remarkEmbedImages)
-      .use(remarkHtml, {sanitize: false})
+      .use(remarkRehype)
+      .use(rehypeStringify)
       .process(new VFile({path: input, value: await fs.readFile(input)}))
   )
-  assert.equal(actual, expected, 'should integrate with `remark-html`')
+  assert.equal(
+    actual.trimEnd(),
+    expected.trimEnd(),
+    'should integrate with rehype'
+  )
 })
 
 test('fixtures', async function (t) {
@@ -73,7 +88,10 @@ test('fixtures', async function (t) {
       /** @type {string} */
       let output
 
-      const proc = remark().use(remarkEmbedImages)
+      const proc = unified()
+        .use(remarkParse)
+        .use(remarkEmbedImages)
+        .use(remarkStringify)
 
       try {
         output = String(await fs.readFile(outputUrl))
