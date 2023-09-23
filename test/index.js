@@ -2,16 +2,16 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import test from 'node:test'
 import rehypeStringify from 'rehype-stringify'
+import remarkEmbedImages from 'remark-embed-images'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import remarkStringify from 'remark-stringify'
 import {unified} from 'unified'
 import {VFile} from 'vfile'
-import remarkEmbedImages from '../index.js'
 
 test('remark-embed-images', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('../index.js')).sort(), [
+    assert.deepEqual(Object.keys(await import('remark-embed-images')).sort(), [
       'default'
     ])
   })
