@@ -30,12 +30,6 @@
 This package is a [unified][] ([remark][]) plugin that inlines images as data
 URIs.
 
-**unified** is a project that transforms content with abstract syntax trees
-(ASTs).
-**remark** adds support for markdown to unified.
-**mdast** is the markdown AST that remark uses.
-This is a remark plugin that transforms mdast.
-
 ## When should I use this?
 
 You can use this package when you want to move markdown that references local
@@ -45,8 +39,8 @@ This does makes the markdown quite hard to read and isn’t supported everywhere
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install remark-embed-images
@@ -68,32 +62,28 @@ In browsers with [`esm.sh`][esmsh]:
 
 ## Use
 
-Say we have an image [`foo.png`][foo.png] and next to it the following file
-`example.md`:
+Say we have an image [`foo.png`][file-foo-png] and next to it the following
+file `example.md`:
 
 ```markdown
 ![A pink square](./foo.png)
 ```
 
-And our module `example.js` looks as follows:
+…and a module `example.js`:
 
 ```js
-import {read} from 'to-vfile'
 import {remark} from 'remark'
 import remarkEmbedImages from 'remark-embed-images'
+import {read} from 'to-vfile'
 
-main()
+const file = await remark()
+  .use(remarkEmbedImages)
+  .process(await read('example.md'))
 
-async function main() {
-  const file = await remark()
-    .use(remarkEmbedImages)
-    .process(await read('example.md'))
-
-  console.log(String(file))
-}
+console.log(String(file))
 ```
 
-Now running `node example.js` yields:
+…then running `node example.js` yields:
 
 ```markdown
 ![A pink square](data:image/png;base64,iVBORw0…)
@@ -102,24 +92,34 @@ Now running `node example.js` yields:
 ## API
 
 This package exports no identifiers.
-The default export is `remarkEmbedImages`.
+The default export is [`remarkEmbedImages`][api-remark-embed-images].
 
 ### `unified().use(remarkEmbedImages)`
 
-Plugin to embed local images as data URIs.
+Embed local images as data URIs.
+
+###### Parameters
+
 There are no options.
+
+###### Returns
+
+Transform ([`Transformer`][unified-transformer]).
 
 ## Types
 
 This package is fully typed with [TypeScript][].
-There are no extra exported types.
+It exports no additional types.
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `remark-embed-images@^3`,
+compatible with Node.js 12.
 
 This plugin works with `unified` version 6+ and `remark` version 7+.
 
@@ -128,7 +128,8 @@ This plugin works with `unified` version 6+ and `remark` version 7+.
 Always be careful with user input.
 For example, it’s possible to hide JavaScript inside images (such as GIFs,
 WebPs, and SVGs).
-User provided images open you up to a [cross-site scripting (XSS)][xss] attack.
+User provided images open you up to a [cross-site scripting (XSS)][wiki-xss]
+attack.
 
 ## Related
 
@@ -165,9 +166,9 @@ abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/remark-embed-images
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-embed-images.svg
+[size-badge]: https://img.shields.io/bundlejs/size/remark-embed-images
 
-[size]: https://bundlephobia.com/result?p=remark-embed-images
+[size]: https://bundlejs.com/?q=remark-embed-images
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -181,15 +182,17 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
 [esmsh]: https://esm.sh
 
 [health]: https://github.com/remarkjs/.github
 
-[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
+[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
 
-[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md
+[support]: https://github.com/remarkjs/.github/blob/main/support.md
 
-[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
 
 [license]: license
 
@@ -197,10 +200,14 @@ abide by its terms.
 
 [remark]: https://github.com/remarkjs/remark
 
-[foo.png]: test/fixtures/foo/foo.png
+[typescript]: https://www.typescriptlang.org
 
 [unified]: https://github.com/unifiedjs/unified
 
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+[unified-transformer]: https://github.com/unifiedjs/unified#transformer
 
-[typescript]: https://www.typescriptlang.org
+[wiki-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[file-foo-png]: test/fixtures/foo/foo.png
+
+[api-remark-embed-images]: #unifieduseremarkembedimages
