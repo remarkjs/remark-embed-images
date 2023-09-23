@@ -39,8 +39,8 @@
     "@types/mdast": "^4.0.0",
     "is-relative-url": "^4.0.0",
     "mime": "^3.0.0",
-    "unified": "^11.0.0",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "vfile": "^6.0.0"
   },
   "devDependencies": {
     "@types/mime": "^3.0.0",
@@ -55,7 +55,7 @@
     "remark-stringify": "^11.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
-    "vfile": "^6.0.0",
+    "unified": "^11.0.0",
     "xo": "^0.56.0"
   },
   "scripts": {
