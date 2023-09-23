@@ -197,7 +197,7 @@ abide by its terms.
 
 [remark]: https://github.com/remarkjs/remark
 
-[foo.png]: test/fixtures/foo.png
+[foo.png]: test/fixtures/foo/foo.png
 
 [unified]: https://github.com/unifiedjs/unified
 
