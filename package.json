@@ -4,16 +4,16 @@
   "description": "remark plugin to embed local images as data URIs",
   "license": "MIT",
   "keywords": [
-    "unified",
+    "base64",
+    "embed",
+    "image",
+    "inline",
+    "markdown",
+    "mdast",
+    "plugin",
     "remark",
     "remark-plugin",
-    "plugin",
-    "mdast",
-    "markdown",
-    "image",
-    "embed",
-    "base64",
-    "inline"
+    "unified"
   ],
   "repository": "remarkjs/remark-embed-images",
   "bugs": "https://github.com/remarkjs/remark-embed-images/issues",
@@ -50,7 +50,6 @@
     "remark-cli": "^11.0.0",
     "remark-html": "^15.0.0",
     "remark-preset-wooorm": "^9.0.0",
-    "rimraf": "^3.0.0",
     "tape": "^5.0.0",
     "to-vfile": "^7.0.0",
     "type-coverage": "^2.0.0",
@@ -58,35 +57,46 @@
     "xo": "^0.56.0"
   },
   "scripts": {
-    "build": "rimraf \"*.d.ts\" \"test/**/*.d.ts\" && tsc && type-coverage",
-    "format": "remark . -qfo --ignore-pattern test/ && prettier . -w --log-level warn && xo --fix",
+    "build": "tsc --build --clean && tsc --build && type-coverage",
+    "format": "remark . --frail --output --quiet && prettier . --log-level warn --write && xo --fix",
+    "prepack": "npm run build && npm run format",
+    "test": "npm run build && npm run format && npm run test-coverage",
     "test-api": "node --conditions development test/index.js",
-    "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
-    "test": "npm run build && npm run format && npm run test-coverage"
+    "test-coverage": "c8 --100 --reporter lcov npm run test-api"
   },
   "prettier": {
-    "tabWidth": 2,
-    "useTabs": false,
-    "singleQuote": true,
     "bracketSpacing": false,
+    "singleQuote": true,
     "semi": false,
-    "trailingComma": "none"
-  },
-  "xo": {
-    "prettier": true,
-    "rules": {
-      "unicorn/prefer-string-replace-all": "off"
-    }
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false
   },
   "remarkConfig": {
     "plugins": [
-      "preset-wooorm"
+      "remark-preset-wooorm"
     ]
   },
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
-    "strict": true,
-    "ignoreCatch": true
+    "ignoreCatch": true,
+    "strict": true
+  },
+  "xo": {
+    "overrides": [
+      {
+        "files": [
+          "test/**/*.js"
+        ],
+        "rules": {
+          "no-await-in-loop": "off"
+        }
+      }
+    ],
+    "prettier": true,
+    "rules": {
+      "unicorn/prefer-string-replace-all": "off"
+    }
   }
 }
