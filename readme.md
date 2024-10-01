@@ -40,7 +40,7 @@ This does makes the markdown quite hard to read and isn’t supported everywhere
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 16+), install with [npm][]:
+In Node.js (version 18+), install with [npm][]:
 
 ```sh
 npm install remark-embed-images
@@ -118,8 +118,8 @@ versions of Node.js.
 
 When we cut a new major release, we drop support for unmaintained versions of
 Node.
-This means we try to keep the current release line, `remark-embed-images@^4`,
-compatible with Node.js 16.
+This means we try to keep the current release line, `remark-embed-images@4`,
+compatible with Node.js 18.
 
 This plugin works with `unified` version 6+ and `remark` version 7+.
 
