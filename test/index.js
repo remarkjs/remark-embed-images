@@ -92,7 +92,7 @@ test('fixtures', async function (t) {
       /** @type {string} */
       let output
 
-      const proc = unified()
+      const processor = unified()
         .use(remarkParse)
         .use(remarkEmbedImages)
         .use(remarkStringify)
@@ -104,7 +104,7 @@ test('fixtures', async function (t) {
       }
 
       const file = new VFile({path: inputUrl, value: input})
-      assert.equal(String(await proc.process(file)), String(output))
+      assert.equal(String(await processor.process(file)), String(output))
     })
   }
 })

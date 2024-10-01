@@ -12,18 +12,18 @@
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Install](#install)
-*   [Use](#use)
-*   [API](#api)
-    *   [`unified().use(remarkEmbedImages)`](#unifieduseremarkembedimages)
-*   [Types](#types)
-*   [Compatibility](#compatibility)
-*   [Security](#security)
-*   [Related](#related)
-*   [Contribute](#contribute)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Install](#install)
+* [Use](#use)
+* [API](#api)
+  * [`unified().use(remarkEmbedImages)`](#unifieduseremarkembedimages)
+* [Types](#types)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Related](#related)
+* [Contribute](#contribute)
+* [License](#license)
 
 ## What is this?
 
@@ -133,10 +133,10 @@ attack.
 
 ## Related
 
-*   [`remarkjs/remark-images`](https://github.com/remarkjs/remark-images)
-    — add a simpler image syntax
-*   [`remarkjs/remark-unwrap-images`](https://github.com/remarkjs/remark-unwrap-images)
-    — remove the wrapping paragraph for images
+* [`remarkjs/remark-images`](https://github.com/remarkjs/remark-images)
+  — add a simpler image syntax
+* [`remarkjs/remark-unwrap-images`](https://github.com/remarkjs/remark-unwrap-images)
+  — remove the wrapping paragraph for images
 
 ## Contribute
 
