@@ -49,14 +49,14 @@ npm install remark-embed-images
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkEmbedImages from 'https://esm.sh/remark-embed-images@4'
+import remarkEmbedImages from 'https://esm.sh/remark-embed-images@5'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkEmbedImages from 'https://esm.sh/remark-embed-images@4?bundle'
+  import remarkEmbedImages from 'https://esm.sh/remark-embed-images@5?bundle'
 </script>
 ```
 
@@ -76,9 +76,11 @@ import {remark} from 'remark'
 import remarkEmbedImages from 'remark-embed-images'
 import {read} from 'to-vfile'
 
-const file = await remark()
+const file = await read('example.md')
+
+await remark()
   .use(remarkEmbedImages)
-  .process(await read('example.md'))
+  .process(file)
 
 console.log(String(file))
 ```
@@ -118,7 +120,7 @@ versions of Node.js.
 
 When we cut a new major release, we drop support for unmaintained versions of
 Node.
-This means we try to keep the current release line, `remark-embed-images@4`,
+This means we try to keep the current release line, `remark-embed-images@5`,
 compatible with Node.js 18.
 
 This plugin works with `unified` version 6+ and `remark` version 7+.
